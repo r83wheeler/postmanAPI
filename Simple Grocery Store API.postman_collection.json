@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "dd1418b1-9df6-436c-8052-b5b5b5deb432",
+		"name": "Simple Grocery Store API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10716458"
+	},
+	"item": [
+		{
+			"name": "API Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/status",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products?category=fresh-produce&results=20",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "fresh-produce"
+						},
+						{
+							"key": "results",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/:productId",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "5851"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/carts",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/carts/:cartId",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"carts",
+						":cartId"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "xd8mt5LaGDlpSWHrfKlR2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/carts/:cartId/items",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "xd8mt5LaGDlpSWHrfKlR2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"productId\": 2585\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/carts/:cartId/items",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "xd8mt5LaGDlpSWHrfKlR2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register API client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"clientName\": \"Postman on Valentin's computer\",\n   \"clientEmail\": \"valentin89899@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api-clients",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api-clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cartId\": \"xd8mt5LaGDlpSWHrfKlR2\",\n    \"customerName\": \"John Doe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/orders",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://simple-grocery-store-api.glitch.me"
+		},
+		{
+			"key": "accessToken",
+			"value": "YOUR ACCESS TOKEN",
+			"type": "string"
+		}
+	]
+}
